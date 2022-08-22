@@ -19,6 +19,7 @@ const getUserProfile = async (req, res) => {
 const updateUserDetails = async (req, res) => {
     try{
         let {userId} = req.user
+        delete req.body.password
         const data = await userModel.user.updateOne({userId}, {
             $set : {
                 ...req.body
